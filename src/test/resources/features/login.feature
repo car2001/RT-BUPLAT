@@ -1,7 +1,14 @@
-Feature: feature to test login functionality
+Feature: Funcionalidad para probar el inicio de sesión
 
-  Scenario: Check login is successful with valid credentials
-    Given user is on login page
-    When user enters username and password
-    And  click on login button
-    Then user is navigated to the applications home
+  Scenario Outline: Verificar que el inicio de sesión es exitoso con credenciales válidas
+    Given usuario está en la página de inicio de sesión
+    When usuario ingresa el nombre de '<usuario>' y la '<contraseña>'
+    And  clic en el botón de inicio de sesión
+    Then el usuario es dirigido a la página principal de la aplicación
+    Examples:
+      | usuario | contraseña |
+      | jjuarez | 1234       |
+      | cpingo  | 1234       |
+
+
+

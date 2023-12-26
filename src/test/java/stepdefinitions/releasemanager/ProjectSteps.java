@@ -1,6 +1,6 @@
 package stepdefinitions.releasemanager;
 
-import io.cucumber.java.After;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,6 +11,8 @@ import pages.apps.releasemanager.project.ProjectPage;
 import stepdefinitions.TestConfig;
 import utilities.Asserts;
 import utilities.CommonFormsPage;
+
+import java.util.Map;
 
 public class ProjectSteps {
     private WebDriver driver = TestConfig.getDriver();
@@ -27,29 +29,78 @@ public class ProjectSteps {
         loginPage.loginUser("tester","1234");
         homePage.clickBtnReleaseManager();
     }
-    @When("el usuario hace clic derecho en Proyectos")
-    public void el_usuario_hace_clic_derecho_en_proyectos() {
-        projectPage.rightClickNodeProject();
-    }
     @When("el usuario hace click en Nuevo Proyecto")
     public void el_usuario_hace_click_en_nuevo_proyecto() {
+        projectPage.rightClickNodeProject();
         projectPage.clickNewProject();
     }
-    @When("llena todos los campos requeridos")
-    public void llena_todos_los_campos_requeridos() {
-        commonFormsPage.fillGeneralForm("Projecto Tester","Projecto Tester","Projecto Tester");
-        projectPage.fillProjectDataForm("20","25","2025","Open");
+    @When("llena el formulario de proyecto con los siguientes valores:$")
+    public void llena_el_formulario_de_proyecto_con_los_siguientes_valores(Map<String, String> projectFields) {
+
+        String nameProject = projectFields.get("name");
+        String displayNameProject = projectFields.get("displayName");
+        String descriptionProject = projectFields.get("description");
+        String startDayProject = projectFields.get("startDay");
+        String endDayProject = projectFields.get("endDay");
+        String endYearProject = projectFields.get("endYear");
+        String stateProject = projectFields.get("state");
+
+        commonFormsPage.fillGeneralForm(nameProject,displayNameProject,descriptionProject);
+        projectPage.fillProjectDataForm(startDayProject,endDayProject,endYearProject,stateProject);
     }
-    @When("hace clic en el botón de guardar")
-    public void hace_clic_en_el_botón_de_guardar() {
+    @And("hace clic en el botón de guardar")
+    public void hace_clic_en_el_botón_de_guardar(){
         commonFormsPage.clickBtnSave();
     }
     @Then("se muestra un mensaje confirmando que se ha creado el proyecto")
     public void se_muestra_un_mensaje_confirmando_que_se_ha_creado_el_proyecto() {
         String textMessage = commonFormsPage.textMessageSection();
         commonFormsPage.clickBtnCloseMessage();
-        asserts.assertSave(textMessage);
-        System.out.println(textMessage);
+        asserts.assertSuccessOperation(textMessage);
     }
+    @When("el usuario hace click en el proyecto {string} para editarlo")
+    public void el_usuario_hace_click_en_un_proyecto_a_editar(String nameProject) {
+        projectPage.clickArrowProject();
+        projectPage.clickProjectSelect(nameProject);
+    }
+    @When("hace clic en el botón editar y se editan los campos del formulario con los siguientes valores:")
+    public void hace_clic_en_el_botón_editar_y_se_cambian_los_campos_del_formulario_de_proyecto(Map<String, String> projectFields) {
+
+        String nameProject = projectFields.get("name");
+        String displayNameProject = projectFields.get("displayName");
+        String descriptionProject = projectFields.get("description");
+
+        commonFormsPage.clickBtnEdit();
+        commonFormsPage.clearName();
+        commonFormsPage.clearDisplayName();
+        commonFormsPage.clearDescription();
+        commonFormsPage.fillGeneralForm(nameProject,displayNameProject,descriptionProject);
+        commonFormsPage.clickBtnSave();
+    }
+    @Then("se muestra un mensaje confirmando que se ha editado el proyecto")
+    public void se_muestra_un_mensaje_confirmando_que_se_ha_editado_el_proyecto() {
+        String textMessage = commonFormsPage.textMessageSection();
+        commonFormsPage.clickBtnCloseMessage();
+        asserts.assertSuccessOperation(textMessage);
+    }
+    @When("el usuario hace click en el proyecto {string} para eliminar")
+    public void el_usuario_hace_click_en_un_proyecto_a_eliminar(String nameProject) {
+        projectPage.clickArrowProject();
+        projectPage.rightClickProjectSelect(nameProject);
+    }
+    @And("hace clic en el botón eliminar")
+    public void hace_clic_en_el_botón_eliminar(){
+        projectPage.clickDeleteProject();
+        projectPage.clickYesDelete();
+    }
+
+    @Then("se muestra un mensaje confirmando que se ha eliminado el proyecto")
+    public void se_muestra_un_mensaje_confirmando_que_se_ha_eliminado_el_proyecto() {
+        commonFormsPage.clickBtnOkDialog();
+        String textMessage = commonFormsPage.textMessageDialog();
+        asserts.assertSuccessOperation(textMessage);
+    }
+
+
 
 }

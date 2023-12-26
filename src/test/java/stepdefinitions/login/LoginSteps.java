@@ -14,24 +14,24 @@ public class LoginSteps {
     private WebDriver driver = TestConfig.getDriver();
     private LoginPage loginPage = new LoginPage(driver);
 
-    @Given("user is on login page")
-    public void user_is_on_login_page() {
+    @Given("usuario está en la página de inicio de sesión")
+    public void usuario_está_en_la_página_de_inicio_de_sesión()  {
         loginPage.get("http://wedox.sytes.net/BUPLAT_config/");
     }
-    @When("user enters username and password")
-    public void user_enters_username_and_password() {
-        loginPage.enterUsername("tester");
-        loginPage.enterPassword("1234");
+    @When("usuario ingresa el nombre de {string} y la {string}")
+    public void usuario_ingresa_el_nombre_de_y_la(String username, String password) {
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
     }
-    @When("click on login button")
-    public void click_on_login_button() {
+    @When("clic en el botón de inicio de sesión")
+    public void clic_en_el_botón_de_inicio_de_sesión()  {
         loginPage.clickBtnLogin();
     }
-
-    @Then("user is navigated to the applications home")
-    public void user_is_navigated_to_the_applications_home() {
+    @Then("el usuario es dirigido a la página principal de la aplicación")
+    public void el_usuario_es_dirigido_a_la_página_principal_de_la_aplicación() {
         driver.manage().window().maximize();
     }
+
 
 
 

@@ -57,6 +57,14 @@ public class Base {
         }
     }
 
+    public void clear(By locator){
+        waitVisibilityElement(locator);
+        if(isDisplayed(locator)){
+            waitClickableElement(locator);
+            driver.findElement(locator).clear();
+        }
+    }
+
     public Boolean isDisplayed(By locator){
         try {
             return driver.findElement(locator).isDisplayed();
