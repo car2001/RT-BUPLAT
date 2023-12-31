@@ -14,16 +14,15 @@ public class CommonFormsPage extends Base {
     private By closeMessageButton = By.xpath("//button[@title='Cerrar' or @title='Close']");
     private By messageDialog = By.xpath("//div[contains(@class,'sapMDialogScrollCont')]//span");
     private By buttonOKDialog = By.xpath("//footer//bdi[text()='OK']");
+
     public CommonFormsPage(WebDriver driver){
         super(driver);
     }
-
     public void fillGeneralForm(String name,String displayName, String description){
         enterName(name);
         enterDisplayName(displayName);
         enterDescription(description);
     }
-
     public void enterName(String name){ sendKeys(name, nameField); }
     public void clearName(){ clear(nameField); }
     public void enterDisplayName(String displayName){
@@ -44,5 +43,4 @@ public class CommonFormsPage extends Base {
     public void clickBtnCloseMessage(){ click(closeMessageButton); }
     public String textMessageDialog(){ return getText(messageDialog); }
     public void clickBtnOkDialog(){ click(buttonOKDialog); }
-
 }

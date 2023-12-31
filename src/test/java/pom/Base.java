@@ -1,6 +1,7 @@
 package pom;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Base {
@@ -25,11 +27,19 @@ public class Base {
     }
 
     public WebElement findElement(By locator){
+        WebElement element;
+        waitVisibilityElement(locator);
+        isDisplayed(locator);
         return driver.findElement(locator);
     }
 
     public List<WebElement> findElements(By locator){
-        return driver.findElements(locator);
+        List<WebElement> elements = new ArrayList<>();
+        waitVisibilityElement(locator);
+        if(isDisplayed(locator)){
+            elements = driver.findElements(locator);
+        }
+        return elements;
     }
 
     public void sendKeys(String inputText, By locator){
@@ -82,6 +92,15 @@ public class Base {
         return textElement;
     }
 
+    public String getAttribute(By locator, String nameAttribute){
+        String valueAttribute = "";
+        waitVisibilityElement(locator);
+        if(isDisplayed(locator)){
+            valueAttribute =  driver.findElement(locator).getAttribute(nameAttribute);
+        }
+        return  valueAttribute;
+    }
+
     public void waitVisibilityElement(By locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -96,10 +115,18 @@ public class Base {
             System.out.println(e.getCause());
         }
     }
-
     public String getLanguage(){
-        String language = driver.findElement(By.xpath("//html")).getAttribute("lang");
+        String language = findElement(By.xpath("//html")).getAttribute("lang");
         return language;
     }
+    public String getXmlview() {
+        String xmlViewXpath = "//div[contains(@id,'xmlview') and contains(@class,'sapUiView sapUiXMLView sapMNavItem') and not(contains(@class,'sapMNavItemHidden'))]";
+        String idXMLView = findElement(By.xpath(xmlViewXpath)).getAttribute("id");
+        return idXMLView;
+    }
+    public void scrollElementTo(JavascriptExecutor js, By element, int position) {
+        js.executeScript("arguments[0].scroll(0,'" + position + "')", findElement(element));
+    }
+
 
 }

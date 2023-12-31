@@ -3,10 +3,12 @@ package pages.apps.releasemanager.project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pom.Base;
+import utilities.BranchCommon;
 
 public class ProjectPage extends Base {
-    private By projectMainNode= By.xpath("//td[contains(@id,'mainTree')]//span[contains(text(),'Projects') ]");
-    private By projectArrow = By.xpath("//span[contains(@id,'mainTree-rows-row0-treeicon')]");
+
+    private BranchCommon branchCommon;
+    private String projectMainNode= "Projects";
     private By newProjectDiv = By.xpath("//div[contains(text(),'New Project') or contains(text(),'Nuevo Proyecto') ]");
     private By deleteProjectDiv = By.xpath("//div[contains(text(),'Delete Project') or contains(text(),'Borrar Proyecto') ]");
     private By startDateIcon = By.xpath("//span[contains(@id,'ProjectStartDate-icon')]");
@@ -16,32 +18,49 @@ public class ProjectPage extends Base {
     private By stateClosedLi = By.xpath("//li[contains(@id,'selectProjectState') and text()='Closed']");
     private By stateInProgressLi = By.xpath("//li[contains(@id,'selectProjectState') and text()='In Progress']");
     private By btnYearCalendarEnd = By.xpath("//button[contains(@id,'ProjectEndDate-cal--Head-B2')]");
+    private By switchUseProject = By.xpath("//div[contains(@id,'useInProcess-switch')]");
+    private By parentUseProject = By.xpath("//div[contains(@id,'useInProcess-switch')]//..");
+    private By switchUseRelease = By.xpath("//div[contains(@id,'useInReleases-switch')]");
+    private By parentUseRelease = By.xpath("//div[contains(@id,'useInReleases-switch')]//..");
     private By btnYesDelete = By.xpath("//bdi[text()='Sí' or text()='Yes']");
+    private By releaseElement = By.xpath("//td[contains(@id,'mainTree')]//span[contains(text(),'Releases') and @title='Liberar' ]");
 
 
 
     public ProjectPage(WebDriver driver){
         super(driver);
+        this.branchCommon = new BranchCommon(driver);
     }
-    public void rightClickNodeProject(){ rightClick(projectMainNode); }
-    public void clickArrowProject(){click(projectArrow);}
+
+    public void rightClickNodeProject(){
+        branchCommon.rightClickElementMainTree(projectMainNode);
+    }
+    public void clickArrowProject(){
+        branchCommon.clickBranchElement(projectMainNode);
+    }
     public void clickProjectSelect(String selectProject){
-        By projectSelectPath = By.xpath("//td[contains(@id,'mainTree')]//span[contains(text(),'"+selectProject+"') ]");
-        click(projectSelectPath);
+        branchCommon.clickElementMainTree(selectProject);
     }
     public void rightClickProjectSelect(String selectProject){
         By projectSelectPath = By.xpath("//td[contains(@id,'mainTree')]//span[contains(text(),'"+selectProject+"') ]");
-        rightClick(projectSelectPath);
+        branchCommon.rightClick(projectSelectPath);
+    }
+    public void clickBranchProjectSelect(String selectProject){
+        branchCommon.clickBranchElement(selectProject);
     }
     public void clickNewProject() { click(newProjectDiv); }
     public void clickDeleteProject(){click(deleteProjectDiv);}
     public void clickYesDelete(){ click(btnYesDelete);}
-    public void fillProjectDataForm(String startDay,String endDay, String endYear, String state){
+    public void fillProjectDataForm(String startDay,String endDay, String endYear, String state, String useProject, String useReleases){
         enterStartDateField(startDay);
         enterEndDateField(endDay,endYear);
         if(state.contains("Closed")){ enterStateClosed(); }
         if(state.contains("In Progress")){ enterStateInProgress(); }
         if(state.contains("Open")){ enterStateOpen();}
+        // Use Project
+        clickUseProjectWithState(useReleases.contains("true") ? "true" : "false");
+        // Use Release
+        clickUseReleasesWithState(useReleases.contains("true") ? "true" : "false");
     }
 
     public void enterStartDateField(String startDay){
@@ -87,5 +106,21 @@ public class ProjectPage extends Base {
     public void clickOpenState(){ click(stateOpenLi); }
     public void clickClosedState(){ click(stateClosedLi); }
     public void clickInProgressState(){ click(stateInProgressLi); }
+    public void clickUseProjectWithState(String stateSwitch){
+        String ariaChecked = getAttribute(parentUseProject,"aria-checked");
+        if(ariaChecked != ""){
+            if(!stateSwitch.equals(ariaChecked)){
+                click(switchUseProject);
+            }
+        }
+    }
+    public void clickUseReleasesWithState(String stateSwitch){
+        String ariaChecked = getAttribute(parentUseRelease,"aria-checked");
+        if(ariaChecked != ""){
+            if(!stateSwitch.equals(ariaChecked)){
+                click(switchUseRelease);
+            }
+        }
+    }
 
 }
