@@ -23,7 +23,7 @@ public class CommonBranchFunctions extends Base {
         if(position != -1){
             click(locatorElement);
         }else {
-            asserts.assertElementMainTree();
+            asserts.assertElementMainTree(nameElement);
         }
     }
 
@@ -33,7 +33,7 @@ public class CommonBranchFunctions extends Base {
         if(position != -1){
             rightClick(locatorElement);
         }else {
-            asserts.assertElementMainTree();
+            asserts.assertElementMainTree(nameElement);
         }
     }
     public void clickBranchElement(String nameElement){
@@ -41,7 +41,7 @@ public class CommonBranchFunctions extends Base {
         if(position != -1){
             accessBranch.clickBranches(position);
         }else{
-           asserts.assertElementMainTree();
+           asserts.assertElementMainTree(nameElement);
         }
     }
     public void clickBranchElementWithState(String nameElement, String action){
@@ -54,7 +54,7 @@ public class CommonBranchFunctions extends Base {
                 if (isBranchExpanded){accessBranch.clickBranches(position);}
             }
         }else{
-            asserts.assertElementMainTree();
+            asserts.assertElementMainTree(nameElement);
         }
     }
 

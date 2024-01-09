@@ -49,7 +49,7 @@ Feature: Probar el ciclo de vida del componente Deployment Request
       | project     | TestDR  |
       | release     | RDR2025 |
     And hace clic en el botón de guardar
-    Then se muestra un mensaje confirmando que se ha creado el deployment request
+    Then se muestra un mensaje confirmando que se ha creado el deployment request desde la tabla
 
   Scenario Outline: TCR-21 Editar un Deployment Request desde el árbol
     Given el usuario hace click en el deployment request '<DeploymentRequest>' desde el árbol y hace hace click en el botón editar
@@ -85,7 +85,7 @@ Feature: Probar el ciclo de vida del componente Deployment Request
 
   Scenario Outline: TCR-24 Eliminar un Deployment Request desde la tabla
     Given el usuario selecciona el deployment request '<DeploymentRequest>' desde la tabla
-    When hace clic en el botón de eliminar
+    When hace clic en el botón de eliminar de la tabla de Deployment Request
     Then se muestra un mensaje confirmando que se ha eliminado el deployment request de la tabla
     Examples:
       | DeploymentRequest |

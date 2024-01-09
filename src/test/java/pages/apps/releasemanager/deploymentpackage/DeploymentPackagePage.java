@@ -2,7 +2,6 @@ package pages.apps.releasemanager.deploymentpackage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pom.Base;
 import utilities.CommonBranchFunctions;
 import utilities.WaitFunctions;
@@ -57,7 +56,7 @@ public class DeploymentPackagePage extends Base {
         branchFunctions.rightClickElementMainTree(selectDeploymentPackage);
     }
 
-    // Actions Form Change Container
+    // Actions Form Deployment Package
     public void fillChangeContainerForm(String project, String release) {
         selectProjectDP(project);
         selectReleaseDP(release);
@@ -79,8 +78,8 @@ public class DeploymentPackagePage extends Base {
     public String getTextFirstDPTable(){
         return getText(firstItemNameDP);
     }
-    public void selectDeploymentPackageTable(String changeContainer){
-        By changeContainerTd = By.xpath("//tr[contains(@id,'tblComponentList')]//td[contains(@id,'col7')]//span[text()='"+changeContainer+"']");
-        click(changeContainerTd);
+    public void selectDeploymentPackageTable(String deploymentPackage){
+        By deploymentPackageTd = By.xpath("//tr[contains(@id,'tblComponentList')]//td[contains(@id,'col7')]//span[text()='"+deploymentPackage+"']");
+        click(deploymentPackageTd);
     }
 }

@@ -1,2 +1,4 @@
-package pages.apps.osm.company;public class CompanyPage {
+package pages.apps.osm.company;
+
+public class CompanyPage {
 }
