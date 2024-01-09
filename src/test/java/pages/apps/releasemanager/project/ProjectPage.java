@@ -3,11 +3,13 @@ package pages.apps.releasemanager.project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pom.Base;
-import utilities.BranchCommon;
+import utilities.CommonBranchFunctions;
+import utilities.WaitFunctions;
 
 public class ProjectPage extends Base {
 
-    private BranchCommon branchCommon;
+    private CommonBranchFunctions branchCommon;
+    private WaitFunctions waitFunctions;
     private String projectMainNode= "Projects";
     private By newProjectDiv = By.xpath("//div[contains(text(),'New Project') or contains(text(),'Nuevo Proyecto') ]");
     private By deleteProjectDiv = By.xpath("//div[contains(text(),'Delete Project') or contains(text(),'Borrar Proyecto') ]");
@@ -23,30 +25,31 @@ public class ProjectPage extends Base {
     private By switchUseRelease = By.xpath("//div[contains(@id,'useInReleases-switch')]");
     private By parentUseRelease = By.xpath("//div[contains(@id,'useInReleases-switch')]//..");
     private By btnYesDelete = By.xpath("//bdi[text()='Sí' or text()='Yes']");
-    private By releaseElement = By.xpath("//td[contains(@id,'mainTree')]//span[contains(text(),'Releases') and @title='Liberar' ]");
-
-
 
     public ProjectPage(WebDriver driver){
         super(driver);
-        this.branchCommon = new BranchCommon(driver);
+        this.branchCommon = new CommonBranchFunctions(driver);
+        this.waitFunctions = new WaitFunctions(driver);
     }
 
     public void rightClickNodeProject(){
         branchCommon.rightClickElementMainTree(projectMainNode);
     }
-    public void clickArrowProject(){
+    public void clickArrowMainProject(){
         branchCommon.clickBranchElement(projectMainNode);
+        waitFunctions.waitForMainTreeToFinishLoading();
     }
     public void clickProjectSelect(String selectProject){
         branchCommon.clickElementMainTree(selectProject);
     }
     public void rightClickProjectSelect(String selectProject){
-        By projectSelectPath = By.xpath("//td[contains(@id,'mainTree')]//span[contains(text(),'"+selectProject+"') ]");
-        branchCommon.rightClick(projectSelectPath);
+        branchCommon.rightClickElementMainTree(selectProject);
     }
-    public void clickBranchProjectSelect(String selectProject){
-        branchCommon.clickBranchElement(selectProject);
+    public void clickArrowProjectSelect(String selectProject){
+        boolean isReleaseVisible = branchCommon.isDisplayBranchElement(selectProject).contains("false");
+        if(isReleaseVisible){
+            branchCommon.clickBranchElement(selectProject);
+        }
     }
     public void clickNewProject() { click(newProjectDiv); }
     public void clickDeleteProject(){click(deleteProjectDiv);}
@@ -58,7 +61,7 @@ public class ProjectPage extends Base {
         if(state.contains("In Progress")){ enterStateInProgress(); }
         if(state.contains("Open")){ enterStateOpen();}
         // Use Project
-        clickUseProjectWithState(useReleases.contains("true") ? "true" : "false");
+        clickUseProjectWithState(useProject.contains("true") ? "true" : "false");
         // Use Release
         clickUseReleasesWithState(useReleases.contains("true") ? "true" : "false");
     }
@@ -122,5 +125,6 @@ public class ProjectPage extends Base {
             }
         }
     }
+
 
 }

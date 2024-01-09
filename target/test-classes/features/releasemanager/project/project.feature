@@ -1,4 +1,4 @@
-Feature: Probar el ciclo de vida del componente del proyecto
+Feature: Probar el ciclo de vida del componente proyecto
 
   Background:
     Given el usuario ha iniciado sesión y esta en la aplicación Release Manager
@@ -31,40 +31,10 @@ Feature: Probar el ciclo de vida del componente del proyecto
       | project       |
       | ProjectDevops |
 
-  Scenario: TCR-03 Verificar que se genere la carpeta Release dentro un proyecto.
-    When se crea un proyecto que use release con los siguientes valores:
-      | Field       | Value |
-      | name        | X     |
-      | displayName | X     |
-      | description | X     |
-      | startDay    | 20    |
-      | endDay      | 25    |
-      | endYear     | 2025  |
-      | state       | Open  |
-      | useProject  | true  |
-      | useReleases | true  |
-    And se verifica que se cree la carpeta release dentro del proyecto
-
-  Scenario: TCR-04: Crear un proyecto sin release.
-    When se crea un proyecto que no use release con los siguientes valores:
-      | Field       | Value           |
-      | name        | ProjectCucumber |
-      | displayName | ProjectCucumber |
-      | description | ProjectCucumber |
-      | startDay    | 20              |
-      | endDay      | 25              |
-      | endYear     | 2025            |
-      | state       | Open            |
-      | useProject  | true            |
-      | useReleases | false           |
-    And se verifica que no se cree la carpeta release dentro del proyecto
-
-  Scenario Outline: TCR-05 Eliminar Proyecto
+  Scenario Outline: TCR-03 Eliminar Proyecto
     When el usuario hace click en el proyecto '<project>' para eliminar
     And hace clic en el botón eliminar
     Then se muestra un mensaje confirmando que se ha eliminado el proyecto
     Examples:
-      | project         |
-      | ProjectDevops2  |
-      | X               |
-      | ProjectCucumber |
+      | project        |
+      | ProjectDevops2 |

@@ -16,6 +16,11 @@ public class Asserts extends Base {
         if(language.contains("en")){ Assert.assertEquals("The Operation has been Completed Successfully.",message); }
         if(language.contains("es")){ Assert.assertEquals("La operación se ha completado con éxito.",message);}
     }
+    public void assertSuccessDeploymentPackage(String message, String nameDP){
+        String language = getLanguage();
+        if(language.contains("en")){ Assert.assertEquals("The DP has been created with Name ´"+nameDP+"´",message); }
+        if(language.contains("es")){ Assert.assertEquals("El paquete de instalación ha sido creado con el nombre ´"+nameDP+"´.",message);}
+    }
     public void assertSuccessSaveDiagram(String message){
         String language = getLanguage();
         if(language.contains("en")){ Assert.assertEquals("The diagram was successfully saved",message); }

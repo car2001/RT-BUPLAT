@@ -2,16 +2,15 @@ package utilities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pom.Base;
 
-public class BranchCommon extends Base {
+public class CommonBranchFunctions extends Base {
 
     private Asserts asserts;
     private AccessBranch accessBranch;
     private DynamicSearch dynamicSearch;
 
-    public BranchCommon(WebDriver driver){
+    public CommonBranchFunctions(WebDriver driver){
         super(driver);
         accessBranch = new AccessBranch(driver);
         dynamicSearch = new DynamicSearch(driver);
@@ -59,10 +58,15 @@ public class BranchCommon extends Base {
         }
     }
 
-    public void searchElementMainTree(String nameElement){
+    public String isDisplayBranchElement(String nameElement){
+        String ariaHidden = "";
         int position = dynamicSearch.searchElementMainTree(nameElement);
-        boolean isDisplayElement = position > -1 ? true : false;
-        asserts.assertElementMainTree(isDisplayElement);
+        if(position != -1){
+            By locatorBranchElement = By.xpath("//span[contains(@id,'mainTree-rows-row"+position+"-treeicon')]");
+            ariaHidden = getAttribute(locatorBranchElement,"aria-hidden");
+        }
+        return ariaHidden;
     }
+
 
 }

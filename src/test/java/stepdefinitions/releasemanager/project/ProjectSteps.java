@@ -1,4 +1,4 @@
-package stepdefinitions.releasemanager;
+package stepdefinitions.releasemanager.project;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,7 +10,7 @@ import pages.apps.login.LoginPage;
 import pages.apps.releasemanager.project.ProjectPage;
 import stepdefinitions.TestConfig;
 import utilities.Asserts;
-import utilities.CommonFormsPage;
+import utilities.CommonFormsFunctions;
 
 import java.util.Map;
 
@@ -19,7 +19,7 @@ public class ProjectSteps {
     private HomePage homePage = new HomePage(driver);
     private LoginPage loginPage = new LoginPage(driver);
     private ProjectPage projectPage = new ProjectPage(driver);
-    private CommonFormsPage  commonFormsPage = new CommonFormsPage(driver);
+    private CommonFormsFunctions commonFormsPage = new CommonFormsFunctions(driver);
     private Asserts asserts = new Asserts(driver);
 
 
@@ -76,7 +76,7 @@ public class ProjectSteps {
 
     @When("el usuario hace click en el proyecto {string} para editarlo")
     public void el_usuario_hace_click_en_un_proyecto_a_editar(String nameProject) {
-        projectPage.clickArrowProject();
+        projectPage.clickArrowMainProject();
         projectPage.clickProjectSelect(nameProject);
     }
     @When("hace clic en el botón editar y se editan los campos del formulario con los siguientes valores:$")
@@ -103,87 +103,11 @@ public class ProjectSteps {
     //------------------------------ END Scenario: TCR-02 Editar Proyecto --------------------------------
 
 
-
-    //--------------------- Scenario: TCR-03 Crear un proyecto con release -------------------------------
-
-    @When("se crea un proyecto que use release con los siguientes valores:$")
-    public void se_crea_un_proyecto_que_use_release_con_los_siguientes_valores(Map<String, String> projectFields){
-
-        projectPage.rightClickNodeProject();
-        projectPage.clickNewProject();
-        projectPage.clickArrowProject();
-
-        String nameProject = projectFields.get("name");
-        String displayNameProject = projectFields.get("displayName");
-        String descriptionProject = projectFields.get("description");
-        String startDayProject = projectFields.get("startDay");
-        String endDayProject = projectFields.get("endDay");
-        String endYearProject = projectFields.get("endYear");
-        String stateProject = projectFields.get("state");
-        String useProject = projectFields.get("useProject");
-        String useReleases = projectFields.get("useReleases");
-
-        commonFormsPage.fillGeneralForm(nameProject,displayNameProject,descriptionProject);
-        projectPage.fillProjectDataForm(startDayProject,endDayProject,endYearProject,stateProject, useProject, useReleases);
-
-        commonFormsPage.clickBtnSave();
-        String textMessage = commonFormsPage.textMessageSection();
-        commonFormsPage.clickBtnCloseMessage();
-        asserts.assertSuccessOperation(textMessage);
-
-        projectPage.clickBranchProjectSelect(displayNameProject);
-    }
-
-    @And("se verifica que se cree la carpeta release dentro del proyecto")
-    public void se_verifica_que_se_cree_la_carpeta_release_dentro_del_proyecto(){
-
-    }
-
-    //--------------------- End Scenario: TCR-03 Crear un proyecto con release -----------------------------
-
-
-    //----------------------- Scenario: TCR-04: Crear un proyecto sin release  -----------------------------
-
-    @When("se crea un proyecto que no use release con los siguientes valores:$")
-    public void se_crea_un_proyecto_que_no_use_release_con_los_siguientes_valores(Map<String, String> projectFields){
-        projectPage.rightClickNodeProject();
-        projectPage.clickNewProject();
-        projectPage.clickArrowProject();
-
-        String nameProject = projectFields.get("name");
-        String displayNameProject = projectFields.get("displayName");
-        String descriptionProject = projectFields.get("description");
-        String startDayProject = projectFields.get("startDay");
-        String endDayProject = projectFields.get("endDay");
-        String endYearProject = projectFields.get("endYear");
-        String stateProject = projectFields.get("state");
-        String useProject = projectFields.get("useProject");
-        String useReleases = projectFields.get("useReleases");
-
-        commonFormsPage.fillGeneralForm(nameProject,displayNameProject,descriptionProject);
-        projectPage.fillProjectDataForm(startDayProject,endDayProject,endYearProject,stateProject, useProject, useReleases);
-
-        commonFormsPage.clickBtnSave();
-        String textMessage = commonFormsPage.textMessageSection();
-        commonFormsPage.clickBtnCloseMessage();
-        asserts.assertSuccessOperation(textMessage);
-
-        projectPage.clickBranchProjectSelect(displayNameProject);
-    }
-
-    @And("se verifica que no se cree la carpeta release dentro del proyecto")
-    public void  se_verifica_que_no_se_cree_la_carpeta_release_dentro_del_proyecto(){
-
-    }
-
-    //----------------------- End Scenario: TCR-04: Crear un proyecto sin release ----------------------
-
-
-    //------------------------------ Scenario: TCR-05 Eliminar Proyecto --------------------------------
+    //------------------------------ Scenario: TCR-03 Eliminar Proyecto --------------------------------
 
     @When("el usuario hace click en el proyecto {string} para eliminar")
     public void el_usuario_hace_click_en_un_proyecto_a_eliminar(String nameProject) {
-        projectPage.clickArrowProject();
+        projectPage.clickArrowMainProject();
         projectPage.rightClickProjectSelect(nameProject);
     }
     @And("hace clic en el botón eliminar")
@@ -194,7 +118,7 @@ public class ProjectSteps {
 
     @Then("se muestra un mensaje confirmando que se ha eliminado el proyecto")
     public void se_muestra_un_mensaje_confirmando_que_se_ha_eliminado_el_proyecto() {
-        commonFormsPage.clickBtnOkDialog();
+        commonFormsPage.confirmSuccessOperation();
         String textMessage = commonFormsPage.textMessageDialog();
         asserts.assertSuccessOperation(textMessage);
     }

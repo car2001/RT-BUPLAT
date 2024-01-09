@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,28 +11,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Base {
 
-    private WebDriver driver;
-    private Actions action;
+    private static WebDriver driver;
+    private static Actions action;
 
     public Base(WebDriver driver){
         this.driver = driver;
+        this.action = new Actions(driver);
     }
 
     public void get(String url){
         driver.get(url);
     }
 
-    public WebElement findElement(By locator){
-        WebElement element;
+    public static WebElement findElement(By locator){
         waitVisibilityElement(locator);
         isDisplayed(locator);
         return driver.findElement(locator);
     }
 
-    public List<WebElement> findElements(By locator){
+    public static List<WebElement> findElements(By locator){
         List<WebElement> elements = new ArrayList<>();
         waitVisibilityElement(locator);
         if(isDisplayed(locator)){
@@ -42,7 +42,7 @@ public class Base {
         return elements;
     }
 
-    public void sendKeys(String inputText, By locator){
+    public static void sendKeys(String inputText, By locator){
         waitVisibilityElement(locator);
         if(isDisplayed(locator)){
             waitClickableElement(locator);
@@ -50,7 +50,7 @@ public class Base {
         }
     }
 
-    public void click(By locator){
+    public static void click(By locator){
         waitVisibilityElement(locator);
         if(isDisplayed(locator)){
             waitClickableElement(locator);
@@ -58,8 +58,7 @@ public class Base {
         }
     }
 
-    public void rightClick(By locator){
-        action = new Actions(driver);
+    public static void rightClick(By locator){
         waitVisibilityElement(locator);
         if(isDisplayed(locator)){
             waitClickableElement(locator);
@@ -67,7 +66,7 @@ public class Base {
         }
     }
 
-    public void clear(By locator){
+    public static void clear(By locator){
         waitVisibilityElement(locator);
         if(isDisplayed(locator)){
             waitClickableElement(locator);
@@ -75,7 +74,7 @@ public class Base {
         }
     }
 
-    public Boolean isDisplayed(By locator){
+    public static Boolean isDisplayed(By locator){
         try {
             return driver.findElement(locator).isDisplayed();
         }catch (org.openqa.selenium.NoSuchElementException e){
@@ -83,7 +82,7 @@ public class Base {
         }
     }
 
-    public String getText(By locator){
+    public static String getText(By locator){
         String textElement = "";
         waitVisibilityElement(locator);
         if(isDisplayed(locator)){
@@ -92,7 +91,7 @@ public class Base {
         return textElement;
     }
 
-    public String getAttribute(By locator, String nameAttribute){
+    public static String getAttribute(By locator, String nameAttribute){
         String valueAttribute = "";
         waitVisibilityElement(locator);
         if(isDisplayed(locator)){
@@ -100,13 +99,25 @@ public class Base {
         }
         return  valueAttribute;
     }
-
-    public void waitVisibilityElement(By locator){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public static void waitVisibilityElement(By locator){
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        }catch (NoSuchElementException e){
+            System.out.println(e);
+        }
     }
 
-    public void waitClickableElement(By locator){
+    public static void waitInvisibilityElement(By locator){
+        try{
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+        }catch (NoSuchElementException e){
+            System.out.println(e);
+        }
+    }
+
+    public static void waitClickableElement(By locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         try{
@@ -115,18 +126,17 @@ public class Base {
             System.out.println(e.getCause());
         }
     }
-    public String getLanguage(){
+    public static String getLanguage(){
         String language = findElement(By.xpath("//html")).getAttribute("lang");
         return language;
     }
-    public String getXmlview() {
+    public static String getXmlView() {
         String xmlViewXpath = "//div[contains(@id,'xmlview') and contains(@class,'sapUiView sapUiXMLView sapMNavItem') and not(contains(@class,'sapMNavItemHidden'))]";
         String idXMLView = findElement(By.xpath(xmlViewXpath)).getAttribute("id");
         return idXMLView;
     }
-    public void scrollElementTo(JavascriptExecutor js, By element, int position) {
+    public static void scrollElementTo(JavascriptExecutor js, By element, int position) {
         js.executeScript("arguments[0].scroll(0,'" + position + "')", findElement(element));
     }
-
 
 }
