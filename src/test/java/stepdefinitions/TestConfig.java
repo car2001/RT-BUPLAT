@@ -8,6 +8,9 @@ import pom.Base;
 
 public class TestConfig {
     private static WebDriver driver;
+    private static String urlPage = "http://wedox.sytes.net/BUPLAT_config";
+    private static String user = "tester";
+    private static String password = "1234";
 
     @Before
     public void setUp() {
@@ -23,8 +26,10 @@ public class TestConfig {
            // driver = null;
        // }
     }
-
     public static WebDriver getDriver() {
         return driver;
     }
+    public static String getUrlPage() { return urlPage; }
+    public static String getUser() { return user; }
+    public static String getPassword() { return password; }
 }

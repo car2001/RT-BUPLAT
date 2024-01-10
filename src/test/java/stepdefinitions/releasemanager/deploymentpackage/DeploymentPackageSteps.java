@@ -42,7 +42,7 @@ public class DeploymentPackageSteps {
         String valueNameInput = commonFormsPage.getValueName();
 
         commonFormsPage.clickBtnCloseMessage();
-        asserts.assertSuccessDeploymentPackage(textMessage,valueNameInput);
+        asserts.assertSaveDeploymentPackage(textMessage,valueNameInput);
     }
     //------------------------------ End Scenario: TCR-13 Crear un Deployment Package desde el árbol ---------------------------
 
@@ -62,7 +62,7 @@ public class DeploymentPackageSteps {
         String valueNameInput = deploymentPackagePage.getTextFirstDPTable();
 
         commonFormsPage.clickBtnCloseMessage();
-        asserts.assertSuccessDeploymentPackage(textMessage,valueNameInput);
+        asserts.assertSaveDeploymentPackage(textMessage,valueNameInput);
     }
     //------------------------------ End Scenario: TCR-14 Crear un Deployment Package desde la tabla ---------------------------
 

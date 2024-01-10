@@ -23,16 +23,6 @@ public class ProjectSteps {
     private Asserts asserts = new Asserts(driver);
 
 
-    //------------------------------ Background --------------------------------------------------
-
-    @Given("el usuario ha iniciado sesión y esta en la aplicación Release Manager")
-    public void el_usuario_ha_iniciado_sesión_y_esta_en_la_aplicación_release_manager() {
-        loginPage.get("http://wedox.sytes.net/BUPLAT_config");
-        loginPage.loginUser("tester","1234");
-        homePage.clickBtnReleaseManager();
-    }
-
-    //------------------------------ End Background --------------------------------------------------
 
     //------------------------------ Scenario: TCR-01 Crear Proyecto -----------------------------
 
@@ -57,10 +47,7 @@ public class ProjectSteps {
         commonFormsPage.fillGeneralForm(nameProject,displayNameProject,descriptionProject);
         projectPage.fillProjectDataForm(startDayProject,endDayProject,endYearProject,stateProject, useProject, useReleases);
     }
-    @And("hace clic en el botón de guardar")
-    public void hace_clic_en_el_botón_de_guardar(){
-        commonFormsPage.clickBtnSave();
-    }
+
     @Then("se muestra un mensaje confirmando que se ha creado el proyecto")
     public void se_muestra_un_mensaje_confirmando_que_se_ha_creado_el_proyecto() {
         String textMessage = commonFormsPage.textMessageSection();

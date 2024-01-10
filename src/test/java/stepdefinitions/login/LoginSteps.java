@@ -14,9 +14,9 @@ public class LoginSteps {
     private WebDriver driver = TestConfig.getDriver();
     private LoginPage loginPage = new LoginPage(driver);
 
-    @Given("usuario está en la página de inicio de sesión")
-    public void usuario_está_en_la_página_de_inicio_de_sesión()  {
-        loginPage.get("http://wedox.sytes.net/BUPLAT_config/");
+    @Given("usuario está en la página de inicio de sesión con la url {string}")
+    public void usuario_está_en_la_página_de_inicio_de_sesión(String url)  {
+        loginPage.get(url);
     }
     @When("usuario ingresa el nombre de {string} y la {string}")
     public void usuario_ingresa_el_nombre_de_y_la(String username, String password) {

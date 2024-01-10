@@ -14,6 +14,7 @@ public class CommonFormsFunctions extends Base {
     // Buttons in Forms
     private By saveButton = By.xpath("//button[contains(@id,'save')]");
     private By editButton = By.xpath("//button[contains(@id,'edit')]");
+    private By viewDependenciesButton = By.xpath("//button[contains(@id,'viewDependencies')]");
 
     // Buttons in Table
     private By btnEditTable = By.xpath("//div[contains(@id,'toolbarButtons')]//button[@title='Editar' or @title='Edit']");
@@ -28,10 +29,12 @@ public class CommonFormsFunctions extends Base {
 
     // Message in Dialog
     private By messageDialog = By.xpath("//div[contains(@class,'sapMDialogScrollCont')]//span");
-    private By parentMessageDialog = By.xpath("//div[contains(@class,'sapMDialogScrollCont')]//span/..");
     private By buttonOKSuccessMessage = By.xpath("//div[contains(@id,'success')]//footer//bdi[text()='OK']");
     private By btnYesConfirmation = By.xpath("//div[contains(@id,'warning')]//footer//bdi[text()='Sí' or text()='Yes']");
     private By btnCloseErrorMessage  = By.xpath("//div[contains(@id,'error')]//footer//bdi[text()='Cerrar' or text()='Close']");
+
+    // Dependencies Section
+    private By dependenciesTableTitle = By.xpath("//div[contains(@id,'dependenciesTableTitle') ]");
 
     public CommonFormsFunctions(WebDriver driver){
         super(driver);
@@ -65,6 +68,7 @@ public class CommonFormsFunctions extends Base {
     // Buttons in Forms
     public void clickBtnSave(){ click(saveButton); }
     public void clickBtnEdit(){ click(editButton); }
+    public void clickBtnViewDependencies(){click(viewDependenciesButton);}
 
     // Buttons in Table
     public void clickBtnAddTable(){click(btnAddTable);}
@@ -86,4 +90,9 @@ public class CommonFormsFunctions extends Base {
     public void confirmSuccessOperation(){ click(buttonOKSuccessMessage); }
     public void confirmDeleteObject(){ click(btnYesConfirmation); }
     public void closeErrorOperation(){click(btnCloseErrorMessage);}
+
+    // Dependencies Section
+    public String getTitleListDependencies(){
+        return getText(dependenciesTableTitle);
+    }
 }

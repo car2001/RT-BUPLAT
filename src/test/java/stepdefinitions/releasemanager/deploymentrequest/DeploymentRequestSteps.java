@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import pages.apps.releasemanager.deploymentpackage.DeploymentPackagePage;
 import pages.apps.releasemanager.deploymentrequest.DeploymentRequestPage;
 import stepdefinitions.TestConfig;
 import utilities.Asserts;
@@ -44,7 +43,7 @@ public class DeploymentRequestSteps {
         String valueNameInput = commonFormsPage.getValueName();
 
         commonFormsPage.clickBtnCloseMessage();
-        asserts.assertSuccessDeploymentRequest(textMessage,valueNameInput);
+        asserts.assertSaveDeploymentRequest(textMessage,valueNameInput);
     }
     //------------------------------ End Scenario: TCR-19 Crear un Deployment Request desde el árbol ---------------------------
 
@@ -65,7 +64,7 @@ public class DeploymentRequestSteps {
         String valueNameInput = deploymentRequestPage.getTextFirstDRTable();
 
         commonFormsPage.clickBtnCloseMessage();
-        asserts.assertSuccessDeploymentRequest(textMessage,valueNameInput);
+        asserts.assertSaveDeploymentRequest(textMessage,valueNameInput);
     }
     //------------------------------ End Scenario: TCR-20 Crear un Deployment Request desde la tabla ---------------------------
 
