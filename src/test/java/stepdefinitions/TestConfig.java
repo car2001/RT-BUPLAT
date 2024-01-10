@@ -4,7 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pom.Base;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TestConfig {
     private static WebDriver driver;
@@ -12,10 +12,13 @@ public class TestConfig {
     private static String user = "tester";
     private static String password = "1234";
 
+
     @Before
     public void setUp() {
         if (driver == null) {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
         }
     }
 

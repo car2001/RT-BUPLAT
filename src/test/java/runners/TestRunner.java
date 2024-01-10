@@ -11,7 +11,8 @@ glue={"stepdefinitions"},
 monochrome = true,
 plugin= {
         "pretty",
-        "html:target/HtmlReports"
+        "html:target/HtmlReports.html",
+        "json:target/report.json"
 }
 )
 public class TestRunner {
