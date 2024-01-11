@@ -5,7 +5,7 @@ Feature: Probar el ciclo de vida del componente Role
     When el usuario selecciona la opción Role en el menú lateral
 
   Scenario: TCR-39 Crear un Role
-    Given el usuario hace click en el botón de Agregar
+    Given el usuario hace clic en el botón de Agregar
     When llena el formulario del role con los siguientes valores:
       | Field         | Value   |
       | name          | CC-7151 |
@@ -17,7 +17,7 @@ Feature: Probar el ciclo de vida del componente Role
     Then se muestra un mensaje confirmando que se ha creado el role
 
   Scenario: TCR-40 Editar un Role
-    Given el usuario selecciona el role de la lista de Roles y hace click en el botón de editar
+    Given el usuario selecciona el role de la lista de Roles y hace clic en el botón de editar
     When llena el formulario del role con los siguientes valores:
       | Field         | Value   |
       | name          | CC-7151 |
