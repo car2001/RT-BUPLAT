@@ -1,0 +1,5 @@
+# Created at 2024-01-11T13:27:09.981
+Boot Manifest-JAR contains absolute paths in classpath 'D:\DOCUMENTOS\Yo\WEDOX\Entregables\Pruebas Automatizado\RegresionTesting\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

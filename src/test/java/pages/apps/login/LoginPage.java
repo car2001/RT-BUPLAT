@@ -30,5 +30,8 @@ public class LoginPage extends Base {
     public void clickBtnLogin(){
         click(loginButton);
     }
+    public String getValueUsername(){
+        return getAttribute(usernameField,"value");
+    }
 
 }

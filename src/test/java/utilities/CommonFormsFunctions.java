@@ -2,7 +2,13 @@ package utilities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pom.Base;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class CommonFormsFunctions extends Base {
 
@@ -14,6 +20,7 @@ public class CommonFormsFunctions extends Base {
     // Buttons in Forms
     private By saveButton = By.xpath("//button[contains(@id,'save')]");
     private By editButton = By.xpath("//button[contains(@id,'edit')]");
+    private By addButton =  By.xpath("//div[@class='sapUiView sapUiXMLView sapMNavItem']//button[contains(@id,'add')]");
     private By viewDependenciesButton = By.xpath("//button[contains(@id,'viewDependencies')]");
 
     // Buttons in Table
@@ -35,6 +42,9 @@ public class CommonFormsFunctions extends Base {
 
     // Dependencies Section
     private By dependenciesTableTitle = By.xpath("//div[contains(@id,'dependenciesTableTitle') ]");
+
+    // Section Nav List
+    private By buttonMore = By.xpath("//div[@class='sapUiView sapUiXMLView sapMNavItem']//span[(text()='Más' or text()='More')]");
 
     public CommonFormsFunctions(WebDriver driver){
         super(driver);
@@ -65,9 +75,57 @@ public class CommonFormsFunctions extends Base {
         clear(descriptionField);
     }
 
+    public void enterDateField(String id, String date) throws ParseException {
+        String[] dateParts = getDateParts(date);
+        String day = dateParts[0];
+        String month = dateParts[1];
+        String year = dateParts[2];
+
+        clickIconDate(id);
+        // Select Year
+        clickBtnYearCalendar(id);
+        clickYearElement(id,year);
+        //Select Month
+        clickBtnMonthCalendar(id);
+        clickMonthElement(id,month);
+        // Select Day
+        clickDayElement(id,day);
+    }
+    public void clickIconDate(String id){
+        click(By.xpath("//span[contains(@id,'"+id+"-icon')]"));
+    }
+    public void clickBtnYearCalendar(String id){
+        click(By.xpath("//button[contains(@id,'"+id+"-cal--Head-B2')]"));
+    }
+    public void clickYearElement(String id,String year){
+        click(By.xpath("//div[contains(@id,'"+id+"-cal')]//div[text()='"+year+"']"));
+    }
+    public void clickBtnMonthCalendar(String id){
+        click(By.xpath("//button[contains(@id,'"+id+"-cal--Head-B1')]"));
+    }
+    public void clickMonthElement(String id, String month){
+        click(By.xpath("//div[contains(@id,'"+id+"-cal--MP-m"+ month +"')]"));
+    }
+    public void clickDayElement(String id, String day){
+        click(By.xpath("//div[contains(@id,'"+id+"-cal')]//span[text()='"+day+"']"));
+    }
+    private String[] getDateParts(String date) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date parsedDate = dateFormat.parse(date);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(parsedDate);
+
+        String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+        String month = String.valueOf(calendar.get(Calendar.MONTH)); // Los meses en Java van de 0 a 11
+        String year = String.valueOf(calendar.get(Calendar.YEAR));
+
+        return new String[]{day, month, year};
+    }
+
     // Buttons in Forms
     public void clickBtnSave(){ click(saveButton); }
     public void clickBtnEdit(){ click(editButton); }
+    public void clickBtnAdd(){ click(addButton); }
     public void clickBtnViewDependencies(){click(viewDependenciesButton);}
 
     // Buttons in Table
@@ -94,5 +152,20 @@ public class CommonFormsFunctions extends Base {
     // Dependencies Section
     public String getTitleListDependencies(){
         return getText(dependenciesTableTitle);
+    }
+
+    // Section Nav List
+    public void clickBtnMore(){
+        try {
+            do {
+                click(buttonMore);
+            } while (isDisplayed(buttonMore));
+        }catch (Exception e){
+            System.out.println(e.getCause());
+        }
+    }
+    public void clickBtnDeleteItem(String nameItem){
+        By buttonDeleteItem = By.xpath("//div[text()='"+nameItem+"']/parent::div/parent::div/following-sibling::button");
+        click(buttonDeleteItem);
     }
 }
