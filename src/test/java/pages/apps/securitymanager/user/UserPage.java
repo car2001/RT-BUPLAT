@@ -6,17 +6,12 @@ import pom.Base;
 import utilities.CommonFormsFunctions;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class UserPage extends Base {
 
     private CommonFormsFunctions commonFormsFunctions;
     private By menuUserAndRole = By.xpath("//div[@title='User & Role Management' or @title='Gestión de Usuarios y Roles']");
     private By listItemUser = By.xpath("//div[@title='User' or @title='Usuario']");
-    private By listItemUserGroup = By.xpath("//div[@title='User Group' or @title='Grupo de Usuario']");
-
     private By userNameInput = By.xpath("//input[contains(@id,'buserUsername')]");
     private By passwordInput = By.xpath("//input[contains(@id,'buserPassword')]");
     private By confirmPasswordInput = By.xpath("//input[contains(@id,'buserConfirmPassword')]");
