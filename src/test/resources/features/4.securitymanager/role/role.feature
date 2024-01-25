@@ -18,7 +18,7 @@ Feature: Probar el ciclo de vida del componente Role
 
   Scenario Outline: TCR-40 Editar un Role
     Given el usuario selecciona el role '<rol>' de la lista de roles y hace clic en el botón de editar
-    When  llena el formulario del role con los siguientes valores:
+    When  llena el formulario del role con los siguientes valores actualizados:
       | Field         | Value        |
       | name          | RolCucumber2 |
       | displayName   | RolCucumber2 |

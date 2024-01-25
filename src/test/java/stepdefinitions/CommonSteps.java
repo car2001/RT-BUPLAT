@@ -37,6 +37,12 @@ public class CommonSteps {
         loginPage.loginUser(user,password);
         homePage.clickBtnSecurityManager();
     }
+    @Given("el usuario ha iniciado sesión y esta en la aplicación Configuration Manager")
+    public void el_usuario_ha_iniciado_sesión_y_esta_en_la_aplicación_configuration_manager(){
+        loginPage.get(urlPage);
+        loginPage.loginUser(user,password);
+        homePage.clickBtnConfigurationManager();
+    }
 
     // Actions in Forms
     @And("hace clic en el botón de guardar")

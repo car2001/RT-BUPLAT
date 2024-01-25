@@ -64,8 +64,8 @@ public class RoleSteps {
 
         commonFormsPage.clickBtnEdit();
     }
-    @When("llena el formulario del role con los siguientes valores:")
-    public void llena_el_formulario_del_role_con_los_siguientes_valores(Map<String, String> roleFields) {
+    @When("llena el formulario del role con los siguientes valores actualizados:")
+    public void llena_el_formulario_del_role_con_los_siguientes_valores_actualizados(Map<String, String> roleFields) {
         String nameRole = roleFields.get("name");
         String displayNameRole = roleFields.get("displayName");
         String descriptionRole = roleFields.get("description");
