@@ -25,13 +25,13 @@ Feature: Probar el ciclo de vida del componente SLA
     And hace clic en el botón de guardar
     Then se muestra un mensaje confirmando que se ha editado el SLA
     Examples:
-      | sla           |
-      | SLACucumber  |
+      | sla         |
+      | SLACucumber |
 
   Scenario Outline: TCR-56 Eliminar un SLA
     When el usuario hace clic en el botón de eliminar del SLA '<sla>'
     Then se muestra un mensaje confirmando la eliminación del SLA
     Examples:
-      | sla           |
+      | sla          |
       | SLACucumber2 |
 

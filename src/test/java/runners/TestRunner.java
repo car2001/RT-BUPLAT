@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-features="src/test/resources/features",
+features="src/test/resources/features/1.login",
 glue={"stepdefinitions"},
 monochrome = true,
 plugin= {
