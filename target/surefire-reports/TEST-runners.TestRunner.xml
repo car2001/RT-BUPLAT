@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="runners.TestRunner" time="10.442" errors="2" skipped="0">
+<testsuite tests="3" failures="0" name="runners.TestRunner" time="198.415" errors="3" skipped="0">
   <properties>
     <property name="idea.version" value="2022.2.3"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -43,12 +43,12 @@
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="11"/>
-    <property name="cucumber.filter.tags" value="@login"/>
+    <property name="cucumber.filter.tags" value="@counter"/>
     <property name="user.name" value="usuario"/>
     <property name="java.class.path" value="D:\IntelliJ IDEA\IntelliJ IDEA Community Edition 2021.3.3\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;D:\IntelliJ IDEA\IntelliJ IDEA Community Edition 2021.3.3\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.2.3 verify -Dcucumber.filter.tags=@login"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.2.3 verify -Dcucumber.filter.tags=@counter"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-11.0.16.1"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -67,120 +67,134 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Funcionalidad para probar el inicio de sesión" name="Verificar que el inicio de sesión es exitoso con credenciales válidas #1" time="7.932">
-    <error message="unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=138.0.7204.184)
+  <testcase classname="Probar el ciclo de vida del componente Counter" name="TCR-48 Crear un Counter" time="68.842">
+    <error message="Expected condition failed: waiting for visibility of element located by By.xpath: //div[contains(@id,&apos;messageSection-content&apos;)]/span (tried for 20 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c0342a47a97c98854c87912f2befaeea, get {url=http://localhost:6208/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52504}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52504/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c0342a47a97c98854c87912f2befaeea" type="org.openqa.selenium.WebDriverException">org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=138.0.7204.184)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57977}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57977/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 00a2b26f2c2e8e7a074302182b658249" type="org.openqa.selenium.TimeoutException">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[contains(@id,&apos;messageSection-content&apos;)]/span (tried for 20 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c0342a47a97c98854c87912f2befaeea, get {url=http://localhost:6208/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52504}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52504/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c0342a47a97c98854c87912f2befaeea
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:304)
-	at pom.Base.get(Base.java:27)
-	at stepdefinitions.login.LoginSteps.usuario_está_en_la_página_de_inicio_de_sesión(LoginSteps.java:20)
-	at ✽.usuario está en la página de inicio de sesión con la url &apos;http://localhost:6208/&apos;(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/1.login/login.feature:5)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57977}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57977/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 00a2b26f2c2e8e7a074302182b658249
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at pom.Base.waitVisibilityElement(Base.java:105)
+	at pom.Base.getText(Base.java:87)
+	at utilities.CommonFormsFunctions.textMessageSection(CommonFormsFunctions.java:143)
+	at stepdefinitions.configurationmanager.counter.CounterSteps.se_muestra_un_mensaje_confirmando_que_se_ha_creado_el_counter(CounterSteps.java:52)
+	at ✽.se muestra un mensaje confirmando que se ha creado el counter(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/5.configurationmanager/counter/counter.feature:18)
 </error>
     <system-out>
-@login @regresion @smoke_test
-Scenario Outline: Verificar que el inicio de sesión es exitoso con credenciales válidas   # src/test/resources/features/1.login/login.feature:11
-  Given usuario está en la página de inicio de sesión con la url &apos;http://localhost:6208/&apos; # stepdefinitions.login.LoginSteps.usuario_está_en_la_página_de_inicio_de_sesión(java.lang.String)
-      org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=138.0.7204.184)
+@TCR-48 @counter
+Scenario: TCR-48 Crear un Counter                                                   # src/test/resources/features/5.configurationmanager/counter/counter.feature:8
+  Given el usuario ha iniciado sesión y esta en la aplicación Configuration Manager # stepdefinitions.CommonSteps.el_usuario_ha_iniciado_sesión_y_esta_en_la_aplicación_configuration_manager()
+  When el usuario selecciona la opción Counter en el menú lateral                   # stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_selecciona_la_opción_counter_en_el_menú_lateral()
+  Given el usuario hace clic en el botón de agregar un counter                      # stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_hace_clic_en_el_botón_de_agregar_un_counter()
+  When llena el formulario del counter con los siguientes valores:                  # stepdefinitions.configurationmanager.counter.CounterSteps.llena_el_formulario_del_counter_con_los_siguientes_valores(java.util.Map&lt;java.lang.String, java.lang.String&gt;)
+    | Field       | Value           |
+    | name        | CounterCucumber |
+    | displayName | CounterCucumber |
+    | description | CounterCucumber |
+    | startAt     | 1               |
+    | increment   | 10              |
+  And hace clic en el botón de guardar                                              # stepdefinitions.CommonSteps.hace_clic_en_el_botón_de_guardar()
+  Then se muestra un mensaje confirmando que se ha creado el counter                # stepdefinitions.configurationmanager.counter.CounterSteps.se_muestra_un_mensaje_confirmando_que_se_ha_creado_el_counter()
+      org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[contains(@id,&apos;messageSection-content&apos;)]/span (tried for 20 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c0342a47a97c98854c87912f2befaeea, get {url=http://localhost:6208/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52504}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52504/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c0342a47a97c98854c87912f2befaeea
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:304)
-	at pom.Base.get(Base.java:27)
-	at stepdefinitions.login.LoginSteps.usuario_está_en_la_página_de_inicio_de_sesión(LoginSteps.java:20)
-	at ✽.usuario está en la página de inicio de sesión con la url &apos;http://localhost:6208/&apos;(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/1.login/login.feature:5)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57977}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57977/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 00a2b26f2c2e8e7a074302182b658249
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at pom.Base.waitVisibilityElement(Base.java:105)
+	at pom.Base.getText(Base.java:87)
+	at utilities.CommonFormsFunctions.textMessageSection(CommonFormsFunctions.java:143)
+	at stepdefinitions.configurationmanager.counter.CounterSteps.se_muestra_un_mensaje_confirmando_que_se_ha_creado_el_counter(CounterSteps.java:52)
+	at ✽.se muestra un mensaje confirmando que se ha creado el counter(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/5.configurationmanager/counter/counter.feature:18)
 
-  When usuario ingresa el nombre de &apos;jjuarez&apos; y la &apos;1234&apos;                                 # stepdefinitions.login.LoginSteps.usuario_ingresa_el_nombre_de_y_la(java.lang.String,java.lang.String)
-  And clic en el botón de inicio de sesión                                                # stepdefinitions.login.LoginSteps.clic_en_el_botón_de_inicio_de_sesión()
-  Then el usuario es dirigido a la página principal de la aplicación                      # stepdefinitions.login.LoginSteps.el_usuario_es_dirigido_a_la_página_principal_de_la_aplicación()
 </system-out>
-    <system-err>ago. 06, 2025 11:15:35 P. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    <system-err>ago. 07, 2025 2:24:29 A. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 138
-ago. 06, 2025 11:15:35 P. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+ago. 07, 2025 2:24:29 A. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 138.0.7204.184. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.14.1` where the version (&quot;v86&quot;) matches the version of the chromium-based browser you&apos;re using and the version number of the artifact is the same as Selenium&apos;s.
 </system-err>
   </testcase>
-  <testcase classname="Funcionalidad para probar el inicio de sesión" name="Verificar que el inicio de sesión es exitoso con credenciales válidas #2" time="2.51">
-    <error message="unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=138.0.7204.184)
+  <testcase classname="Probar el ciclo de vida del componente Counter" name="TCR-49 Editar un Counter" time="62.788">
+    <error message="Expected condition failed: waiting for visibility of element located by By.xpath: //li//div[text()=&apos;CounterCucumber&apos;] (tried for 20 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c0342a47a97c98854c87912f2befaeea, get {url=http://localhost:6208/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52504}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52504/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c0342a47a97c98854c87912f2befaeea" type="org.openqa.selenium.WebDriverException">org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=138.0.7204.184)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58057}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58057/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2472f1ada18be9967a576eef7f890500" type="org.openqa.selenium.TimeoutException">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //li//div[text()=&apos;CounterCucumber&apos;] (tried for 20 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c0342a47a97c98854c87912f2befaeea, get {url=http://localhost:6208/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52504}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52504/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c0342a47a97c98854c87912f2befaeea
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:304)
-	at pom.Base.get(Base.java:27)
-	at stepdefinitions.login.LoginSteps.usuario_está_en_la_página_de_inicio_de_sesión(LoginSteps.java:20)
-	at ✽.usuario está en la página de inicio de sesión con la url &apos;http://localhost:6208/&apos;(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/1.login/login.feature:5)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58057}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58057/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2472f1ada18be9967a576eef7f890500
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at pom.Base.waitVisibilityElement(Base.java:105)
+	at pom.Base.click(Base.java:54)
+	at pages.apps.configurationmanager.counter.CounterPage.clickCounterSelect(CounterPage.java:26)
+	at stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_selecciona_el_counter_de_la_lista_de_contadores_y_hace_clic_en_el_botón_de_editar(CounterSteps.java:63)
+	at ✽.el usuario selecciona el counter &apos;CounterCucumber&apos; de la lista de contadores y hace clic en el botón de editar(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/5.configurationmanager/counter/counter.feature:22)
 </error>
     <system-out>
-@login @regresion @smoke_test
-Scenario Outline: Verificar que el inicio de sesión es exitoso con credenciales válidas   # src/test/resources/features/1.login/login.feature:12
-  Given usuario está en la página de inicio de sesión con la url &apos;http://localhost:6208/&apos; # stepdefinitions.login.LoginSteps.usuario_está_en_la_página_de_inicio_de_sesión(java.lang.String)
-      org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_REFUSED
+@TCR-49 @counter
+Scenario Outline: TCR-49 Editar un Counter                                                                             # src/test/resources/features/5.configurationmanager/counter/counter.feature:32
+  Given el usuario ha iniciado sesión y esta en la aplicación Configuration Manager                                    # stepdefinitions.CommonSteps.el_usuario_ha_iniciado_sesión_y_esta_en_la_aplicación_configuration_manager()
+  When el usuario selecciona la opción Counter en el menú lateral                                                      # stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_selecciona_la_opción_counter_en_el_menú_lateral()
+  Given el usuario selecciona el counter &apos;CounterCucumber&apos; de la lista de contadores y hace clic en el botón de editar # stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_selecciona_el_counter_de_la_lista_de_contadores_y_hace_clic_en_el_botón_de_editar(java.lang.String)
+      org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //li//div[text()=&apos;CounterCucumber&apos;] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58057}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58057/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2472f1ada18be9967a576eef7f890500
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at pom.Base.waitVisibilityElement(Base.java:105)
+	at pom.Base.click(Base.java:54)
+	at pages.apps.configurationmanager.counter.CounterPage.clickCounterSelect(CounterPage.java:26)
+	at stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_selecciona_el_counter_de_la_lista_de_contadores_y_hace_clic_en_el_botón_de_editar(CounterSteps.java:63)
+	at ✽.el usuario selecciona el counter &apos;CounterCucumber&apos; de la lista de contadores y hace clic en el botón de editar(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/5.configurationmanager/counter/counter.feature:22)
+
+  When llena el formulario del counter con los siguientes valores actualizados:                                        # stepdefinitions.configurationmanager.counter.CounterSteps.llena_el_formulario_del_counter_con_los_siguientes_valores_actualizados(java.util.Map&lt;java.lang.String, java.lang.String&gt;)
+    | Field       | Value            |
+    | name        | CounterCucumber2 |
+    | displayName | CounterCucumber2 |
+    | description | CounterCucumber2 |
+  And hace clic en el botón de guardar                                                                                 # stepdefinitions.CommonSteps.hace_clic_en_el_botón_de_guardar()
+  Then se muestra un mensaje confirmando que se ha editado el counter                                                  # stepdefinitions.configurationmanager.counter.CounterSteps.se_muestra_un_mensaje_confirmando_que_se_ha_editado_el_counter()
+</system-out>
+    <system-err>ago. 07, 2025 2:25:34 A. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 138
+ago. 07, 2025 2:25:34 A. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 138.0.7204.184. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.14.1` where the version (&quot;v86&quot;) matches the version of the chromium-based browser you&apos;re using and the version number of the artifact is the same as Selenium&apos;s.
+</system-err>
+  </testcase>
+  <testcase classname="Probar el ciclo de vida del componente Counter" name="TCR-50 Eliminar un counter" time="66.785">
+    <error message="invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
   (Session info: chrome=138.0.7204.184)
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c0342a47a97c98854c87912f2befaeea, get {url=http://localhost:6208/}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52504}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52504/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c0342a47a97c98854c87912f2befaeea
+Command: [d6dd81d5b9899484e16416aad62e7fc4, findElement {using=xpath, value=//div[text()=&apos;CounterCucumber2&apos;]/parent::div/parent::div/following-sibling::button}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58129}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58129/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d6dd81d5b9899484e16416aad62e7fc4" type="org.openqa.selenium.NoSuchSessionException">org.openqa.selenium.NoSuchSessionException: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=138.0.7204.184)
+Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d6dd81d5b9899484e16416aad62e7fc4, findElement {using=xpath, value=//div[text()=&apos;CounterCucumber2&apos;]/parent::div/parent::div/following-sibling::button}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58129}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58129/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d6dd81d5b9899484e16416aad62e7fc4
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -192,14 +206,64 @@ Session ID: c0342a47a97c98854c87912f2befaeea
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:304)
-	at pom.Base.get(Base.java:27)
-	at stepdefinitions.login.LoginSteps.usuario_está_en_la_página_de_inicio_de_sesión(LoginSteps.java:20)
-	at ✽.usuario está en la página de inicio de sesión con la url &apos;http://localhost:6208/&apos;(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/1.login/login.feature:5)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	at pom.Base.waitVisibilityElement(Base.java:105)
+	at pom.Base.click(Base.java:54)
+	at utilities.CommonFormsFunctions.clickBtnDeleteItem(CommonFormsFunctions.java:169)
+	at stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_hace_clic_en_el_botón_de_eliminar_del_counter(CounterSteps.java:91)
+	at ✽.el usuario hace clic en el botón de eliminar del counter &apos;CounterCucumber2&apos;(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/5.configurationmanager/counter/counter.feature:36)
+</error>
+    <system-out>
+@counter
+Scenario Outline: TCR-50 Eliminar un counter                                        # src/test/resources/features/5.configurationmanager/counter/counter.feature:40
+  Given el usuario ha iniciado sesión y esta en la aplicación Configuration Manager # stepdefinitions.CommonSteps.el_usuario_ha_iniciado_sesión_y_esta_en_la_aplicación_configuration_manager()
+  When el usuario selecciona la opción Counter en el menú lateral                   # stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_selecciona_la_opción_counter_en_el_menú_lateral()
+  When el usuario hace clic en el botón de eliminar del counter &apos;CounterCucumber2&apos;  # stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_hace_clic_en_el_botón_de_eliminar_del_counter(java.lang.String)
+      org.openqa.selenium.NoSuchSessionException: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=138.0.7204.184)
+Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.16.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d6dd81d5b9899484e16416aad62e7fc4, findElement {using=xpath, value=//div[text()=&apos;CounterCucumber2&apos;]/parent::div/parent::div/following-sibling::button}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.184, chrome: {chromedriverVersion: 138.0.7204.183 (e90faf484dd..., userDataDir: C:\Users\usuario\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58129}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58129/devtoo..., se:cdpVersion: 138.0.7204.184, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d6dd81d5b9899484e16416aad62e7fc4
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	at pom.Base.waitVisibilityElement(Base.java:105)
+	at pom.Base.click(Base.java:54)
+	at utilities.CommonFormsFunctions.clickBtnDeleteItem(CommonFormsFunctions.java:169)
+	at stepdefinitions.configurationmanager.counter.CounterSteps.el_usuario_hace_clic_en_el_botón_de_eliminar_del_counter(CounterSteps.java:91)
+	at ✽.el usuario hace clic en el botón de eliminar del counter &apos;CounterCucumber2&apos;(file:///D:/DOCUMENTOS/Yo/WEDOX/Entregables/Pruebas%20Automatizado/RegresionTesting/src/test/resources/features/5.configurationmanager/counter/counter.feature:36)
 
-  When usuario ingresa el nombre de &apos;cpingo&apos; y la &apos;1234&apos;                                  # stepdefinitions.login.LoginSteps.usuario_ingresa_el_nombre_de_y_la(java.lang.String,java.lang.String)
-  And clic en el botón de inicio de sesión                                                # stepdefinitions.login.LoginSteps.clic_en_el_botón_de_inicio_de_sesión()
-  Then el usuario es dirigido a la página principal de la aplicación                      # stepdefinitions.login.LoginSteps.el_usuario_es_dirigido_a_la_página_principal_de_la_aplicación()
+  Then se muestra un mensaje confirmando la eliminación del counter                 # stepdefinitions.configurationmanager.counter.CounterSteps.se_muestra_un_mensaje_confirmando_la_eliminación_del_counter()
 </system-out>
+    <system-err>ago. 07, 2025 2:26:37 A. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 138
+ago. 07, 2025 2:26:37 A. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 138.0.7204.184. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.14.1` where the version (&quot;v86&quot;) matches the version of the chromium-based browser you&apos;re using and the version number of the artifact is the same as Selenium&apos;s.
+</system-err>
   </testcase>
 </testsuite>

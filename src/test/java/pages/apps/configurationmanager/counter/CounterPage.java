@@ -7,7 +7,7 @@ import pom.Base;
 public class CounterPage extends Base {
 
     private By itemMenuReusableComp = By.xpath("//div[@title='Reusable Component']");
-    private By itemMenuCounter = By.xpath("//div[@title='Counter' or @title='Contador']");
+    private By itemMenuCounter = By.xpath("//li[@title='Counter' or @title='Contador']");
     private By startAtInput = By.xpath("//input[contains(@id,'txtCounterStartAt')]");
     private By incrementInput = By.xpath("//input[contains(@id,'txtCounterIncrement')]");
 

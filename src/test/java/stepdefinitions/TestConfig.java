@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class TestConfig {
     private static WebDriver driver;
     private static String urlPage = "http://localhost:6208/";
-    private static String user = "tester";
+    private static String user = "cpingo";
     private static String password = "1234";
 
 
@@ -24,10 +24,10 @@ public class TestConfig {
 
     @After
     public void tearDown() {
-        //if (driver != null) {
-            //driver.quit();
-           // driver = null;
-       // }
+        if (driver != null) {
+            driver.quit();
+           driver = null;
+        }
     }
     public static WebDriver getDriver() {
         return driver;

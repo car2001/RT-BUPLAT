@@ -94,8 +94,8 @@ public class CounterSteps {
     public void se_muestra_un_mensaje_confirmando_la_eliminación_del_counter() {
         commonFormsFunctions.confirmDeleteObject();
 
-        commonFormsFunctions.confirmSuccessOperation();
         String textMessage = commonFormsFunctions.textMessageDialog();
+        commonFormsFunctions.confirmSuccessOperation();
         asserts.assertSuccessOperation(textMessage);
     }
     //------------------------------ End Scenario: TCR-50 Eliminar un counter -----------------------------
