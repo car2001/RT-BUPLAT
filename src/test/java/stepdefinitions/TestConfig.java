@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TestConfig {
     private static WebDriver driver;
-    private static String urlPage = "http://wedox.sytes.net/BUPLAT_config";
+    private static String urlPage = "http://localhost:6208/";
     private static String user = "tester";
     private static String password = "1234";
 

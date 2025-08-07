@@ -48,6 +48,4 @@ public class LoginSteps {
         }
         Assert.assertEquals("El campo username no permite ingresar números", assertValue);
     }
-
-
 }
