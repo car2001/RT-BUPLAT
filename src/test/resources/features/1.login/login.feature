@@ -12,7 +12,7 @@ Feature: Funcionalidad para probar el inicio de sesión
       | http://localhost:6208/ | cpingo  |  | 1234       |
 
 
-  @login @regresion @smoke_test @unhappy_path
+  @regresion @smoke_test @unhappy_path
   Scenario Outline: Verificar que el campo username, no permita ingresar numeros
     Given usuario está en la página de inicio de sesión con la url '<url>'
     When usuario ingresa el nombre de '<usuario>' y la '<contraseña>'
